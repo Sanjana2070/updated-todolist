@@ -1,0 +1,86 @@
+html {
+    background-color: beige;
+    background-image: -webkit-linear-gradient(65deg, #A683E3 50%, #E4E9FD 50%);
+    min-height: 1000px;
+    font-family:'Courier New', Courier, monospace;
+}
+
+h1 {
+    color: black;
+    padding: 10px;
+    text-align: center;
+}
+
+.box{
+    max-width: 400px;
+    margin: 50px auto;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 5px 5px 15px -5px rgba(0,0,0, 0.3);
+}
+.div {
+    display: flex;
+    justify-content: center;
+}
+#header {
+    background-color: pink;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.item {
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    gap: 10px;
+    border-bottom: 1px solid whitesmoke;
+}
+
+.item:last-child {
+    border-bottom: 0;
+}
+
+
+form {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    gap: 10px;
+    border-top: 1px solid #eee;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: 2px solid #A683E3;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus {
+    border-color: #7c4dff;
+}
+
+button {
+    background-color: #A683E3;
+    border: none;
+    padding: 10px 16px;
+    color: white;
+    font-size: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #7c4dff;
+}
+
+.checkbox:checked + .task {
+    text-decoration: line-through;
+    color: gray;
+}

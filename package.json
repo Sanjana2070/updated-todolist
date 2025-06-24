@@ -1,0 +1,24 @@
+{
+  "name": "mongoose",
+  "version": "1.0.0",
+  "description": "mongodb and mongoose",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sanjana2070/mernstack-tutedude.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sanjana2070/mernstack-tutedude/issues"
+  },
+  "homepage": "https://github.com/Sanjana2070/mernstack-tutedude#readme",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "mongoose": "^8.16.0"
+  }
+}
