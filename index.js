@@ -1,29 +1,53 @@
 const express = require('express');
 const app = express();
+const mongoose = require("mongoose");
+require("dotenv").config();
+
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-let items = [];
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log("MongoDB connected"))
+  .catch(err => console.error("MongoDB error:", err));
 
-app.get('/', function (req, res){
-    res.render("list", { ejes: items });
+
+
+const itemSchema = new mongoose.Schema({
+  name: String,
+  id: String
 });
 
-app.post("/", function(req, res){
-    const item = req.body.ele1;
-    items.push({ name: item, id: Date.now().toString() }); // add id
-    res.redirect("/");
+const Item = mongoose.model("Item", itemSchema);
+
+
+app.get('/', async (req, res) => {
+  const items = await Item.find();
+  res.render("list", { ejes: items });
 });
 
-app.post("/delete", function(req, res){
-    const idToDelete = req.body.id;
-    items = items.filter(item => item.id !== idToDelete); // remove by id
-    res.redirect("/");
+app.post("/", async (req, res) => {
+  const item = new Item({
+    name: req.body.ele1,
+    id: Date.now().toString()
+  });
+  await item.save();
+  res.redirect("/");
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, function(){
-    console.log("Server Successfully Started");
+app.post("/delete", async (req, res) => {
+  await Item.deleteOne({ id: req.body.id });
+  res.redirect("/");
 });
+
+app.post("/edit", async (req, res) => {
+  await Item.updateOne(
+    { id: req.body.id },
+    { name: req.body.updatedName }
+  );
+  res.redirect("/");
+});
+
+
+app.listen(3000, () => console.log("Server running on port 3000"));

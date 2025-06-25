@@ -24,6 +24,14 @@
       <p class="task"><%= items.name %></p>
     </div>
   </form>
+
+  <!-- Edit form -->
+  <form action="/edit" method="POST" class="edit-form">
+    <input type="hidden" name="id" value="<%= items.id %>">
+    <input type="text" name="updatedName" placeholder="Update task..." required>
+    <button type="submit">Edit</button>
+</form>
+
 <% }) %>
 
 
